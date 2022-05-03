@@ -24,3 +24,8 @@ and start the project with
 nodemon
 ```
 
+## Data Retrieval 
+Used data from https://github.com/openfootball/football.json/blob/master/2020-21/en.1.json
+
+Data is a compilation of the matchups of the Premier League in 2020-2021. Information includes the round, date of match, and the name of the two teams. 
+
