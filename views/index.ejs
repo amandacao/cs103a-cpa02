@@ -1,30 +1,33 @@
 
 
     <div class="jumbotron">
-        <h1>PA03: Course Finder Fall20-Spr21 </h1>
+        <h1>CPA02: Football Match Finder (2020-2021 Season) </h1>
         <p></p>
     </div>
 
     <p class="p-3 m-3 border border-primary bg-light">
-        The goal of this assignment is to write an app that will let
-        students pick their courses for the year. Since we don't have 
-        the data for this year (due to workday issues), we will use the 
-        2020-2021 Academic year data. You must signup or login to see
-        the courses and create your schedule.
+        The objective of this application is to be able to find a specific match (including date, round, and team names) from a large database. 
     </p>
     
-    <% if (true || loggedIn) {%>  
-        <form method="post" action="/courses/bySubject">
-            Show Courses by Subject: 
-              <input type="text" name="subject" 
-                     placeholder="e.g. COSI">
+    <% if (true) {%>  
+        <form method="post" action="/football/byDate">
+            Show Matches by Date: 
+            <input type="text" name="date" 
+                   placeholder="e.g. 2020-09-14">
+          <input type="submit">
+        </form>
+        <br>
+        <form method="post" action="/football/byRound">
+            Show Courses by Instructor Email: 
+            <input type="text" name="round" 
+                   placeholder="e.g. Matchday 1">
             <input type="submit">
         </form>
         <br>
-        <form method="post" action="/courses/byInst">
+        <form method="post" action="/football/byteam">
             Show Courses by Instructor Email: 
-            <input type="text" name="email" 
-                   placeholder="e.g. tjhickey">
+            <input type="text" name="team1" 
+                   placeholder="e.g. Chelsea FC">
             <input type="submit">
         </form>
         <br>
