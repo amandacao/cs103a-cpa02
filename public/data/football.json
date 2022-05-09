@@ -1,7 +1,4 @@
-
-{
-  "name": "Premier League 2020/21",
-  "matches": [
+[
     {
       "round": "Matchday 1",
       "date": "2020-09-12",
@@ -2757,4 +2754,4 @@
       "team2": "Manchester United FC"
     }
   ]
-}
+
