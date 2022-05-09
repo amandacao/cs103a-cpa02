@@ -36,7 +36,7 @@ const footballs = require('./public/data/football.json')
 const mongoose = require( 'mongoose' );
 // NEED TO MAKE OWN MONGODB SERVER
 //const mongodb_URI = process.env.mongodb_URI
-const mongodb_URI = 'mongodb+srv://cs_sj:BrandeisSpr22@cluster0.kgugl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const mongodb_URI = 'mongodb+srv://cs_sj:BrandeisSpr22@cluster0.kgugl.mongodb.net/myDatabase?retryWrites=true&w=majority'
 //const mongodb_URI = 'mongosh "mongodb+srv://cluster0.xshk3.mongodb.net/myFirstDatabase" --apiVersion 1 --username amandacao'
 
 
@@ -269,7 +269,7 @@ app.get('/upsertDB',
       const {round, date, team1, team2}=football;
       await Course.findOneAndUpdate({round, date, team1, team2},football,{upsert:true})
     }
-    const num = await Course.find({}).countDocuments();
+    const num = await Course.find({}).count();
     res.send("data uploaded: "+num)
   }
 )
@@ -280,7 +280,7 @@ app.post('/footballs/byRound',
   async(req,res,next)=> {
     const {round} = req.body;
     var regex_round = new RegExp(round, "gi")
-    const footballs = await Course.find({round:regex_round}).sort({title:1})
+    const footballs = await Course.find({round:regex_round})
     res.locals.footballs = footballs
     res.render('courselist')
   }
@@ -291,7 +291,7 @@ app.post('/footballs/byDate',
   async(req,res,next)=> {
     const {date} = req.body;
     var regex_date = new RegExp(date, "gi")
-    const footballs = await Course.find({date:regex_date}).sort({title:1})
+    const footballs = await Course.find({date:regex_date})
     res.locals.footballs = footballs
     res.render('courselist')
   }
@@ -302,7 +302,7 @@ app.post('/footballs/byTeam1',
   async(req,res,next)=> {
     const {team1} = req.body;
     var regex_name = new RegExp(team1, "gi")
-    const footballs = await Course.find({team1:regex_name}).sort({title:1})
+    const footballs = await Course.find({team1:regex_name})
     res.locals.footballs = footballs
     res.render('courselist')
   }
