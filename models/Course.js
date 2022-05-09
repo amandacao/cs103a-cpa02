@@ -11,8 +11,7 @@ var courseSchema = Schema( {
     date: String,
     team1: String, 
     team2: String, 
-    score: {String},
-    ft: [Int, Int]
+    score: {String}
 } );
 
 module.exports = mongoose.model( 'Course', courseSchema );

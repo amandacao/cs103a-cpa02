@@ -1,18 +1,62 @@
-<ul>
-    <% for (course of courses){%>
-        <li> 
-            <a href="/schedule/remove/<%= course._id %>">X</a>
-            <%= course['subject'] %>
-            <%= course.coursenum %>
-            <%= course.name %>
-            <%= course.term %>
-            
-        </li>
-    <% } %>
-</ul>
-
-<!--
-    <pre>
-        <%= JSON.stringify(courses,null,5) %>
-    </pre>
--->
+<% if (courses.length==0){%>
+    There are no courses currently in your schedule.
+  
+  <% } else  if (courses==null) { %>
+  
+    There are no courses currently in your schedule.
+  
+  <% } else if (courses.length>0) { %>
+  
+      <h2 class="mt-5">Courses in your schedule: </h2>
+  
+      <div class="d-flex flex-wrap  overflow-scroll">
+          <% for (course of courses) {%>
+              <div class="p-3 m-3 border border-danger bg-light" style="max-width: 30vw;">
+                  
+                  <br> 
+                  <a style="color: red; text-decoration: none;" href="/schedule/remove/<%= course._id %>"> 
+                   X
+                  </a>
+                  <div style="font-weight: 600; ">
+                    <%= course.name %>
+                  </div>
+                  <hr>
+                  <div class="d-flex flex-wrap  overflow-wrap">
+                    <div class="p-1 m-1">
+                        <%= course['subject'] %>
+                        <%= course.coursenum %>
+                    </div>
+                    <div class="p-1 m-1">
+                        Term:  <%= course.term %>
+                    </div>
+                    <div class="p-1 m-1">
+                        <% if (course.limit > course.enrolled) {%> 
+                            You are 1 student of <%= course.enrolled %> in the class. 
+                        <%} else {%>
+                            Course limit of: <%= course.limit %> students exceeded. You are currently on a waitlist of <%= course.waiting %> students.
+                            <%}%>
+                    </div>
+                    <div class="p-1 m-1"> 
+                        <%= course.instructor[1] %> will be your professor! 
+                    </div>
+                    <div class="p-1 m-1"> 
+                        The meeting times for your course will be: 
+                    </div>
+                    <div class="p-1 m-1"> 
+                        <%= course.strTimes%>
+                    </div>
+                    <div class="p-1 m-1"> 
+                        There are <%= course.enrolled%> students enrolled!
+                     </div>
+                    <div class="p-1 m-1"> 
+                       With <%= course.waiting%> students on the waitlist!
+                    </div>
+                  </div>
+                  
+                  
+              </div>
+          <% }%>
+          </div>
+  
+      <hr>
+  <% } %>

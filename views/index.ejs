@@ -10,28 +10,27 @@
     </p>
     
     <% if (true) {%>  
-        <form method="post" action="/football/byDate">
+        <form method="post" action="/footballs/byDate">
             Show Matches by Date: 
             <input type="text" name="date" 
                    placeholder="e.g. 2020-09-14">
           <input type="submit">
         </form>
         <br>
-        <form method="post" action="/football/byRound">
-            Show Courses by Instructor Email: 
+        <form method="post" action="/footballs/byRound">
+            Show Matches by Round: 
             <input type="text" name="round" 
                    placeholder="e.g. Matchday 1">
             <input type="submit">
         </form>
         <br>
-        <form method="post" action="/football/byteam">
-            Show Courses by Instructor Email: 
+        <form method="post" action="/footballs/byTeam1">
+            Show Matches by Team: 
             <input type="text" name="team1" 
                    placeholder="e.g. Chelsea FC">
             <input type="submit">
         </form>
         <br>
-        <a href="/schedule/show">Show Schedule</a>
     <% } %>
 
 
